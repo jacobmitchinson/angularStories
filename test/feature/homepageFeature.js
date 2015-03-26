@@ -8,6 +8,5 @@ describe('Shopping Cart', function() {
     var items = element.all(by.repeater('product in products'));
     expect(items.count()).toEqual(13);
   });
-     
 
 }); 
