@@ -4,11 +4,17 @@
 
   <head>
     <script src="bower_components/angular/angular.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/homepageController.js"></script>
   </head> 
 
-  <body> 
+  <body ng-controller='homepageController'> 
 
-    
+    <div ng-repeat='item in clothes'> 
+      <p>Item: {{item.name}}</p>
+      <p>Name: {{item.colour}}</p>
+    </div
+
   </body>
 
 
