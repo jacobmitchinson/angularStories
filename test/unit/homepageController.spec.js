@@ -36,5 +36,4 @@ describe('homepageController', function() {
     add();
     expect(scope.total()).toEqual(99);
   });
-
 });
