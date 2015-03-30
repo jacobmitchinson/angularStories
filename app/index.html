@@ -9,7 +9,6 @@
   </head> 
 
   <body ng-controller='homepageController'> 
-
     <div ng-repeat='item in clothes'> 
 
       <div ng-show="item.quantity">
@@ -28,9 +27,12 @@
         {{item.name}}
         <input class='remove-from-basket' type="button" value="Remove from Basket" ng-click="remove(item)">
       </div>
+      <input type="text" ng-model="voucher" name="text" id='enter-voucher' />
+      <input type="submit" id="submit" value="Submit" />
       <p id='total-price'>£{{calculateTotal().toFixed(2)}}</p>
-    </div>
 
+      <p id='voucher-price'> With Voucher: {{ applyVoucher(voucher); '£' + total.toFixed(2)}}</p>
+    </div>
   </body>
 
 
