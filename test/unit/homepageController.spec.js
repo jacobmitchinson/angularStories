@@ -18,4 +18,10 @@ describe('homepageController', function() {
     expect(scope.clothes).toEqual([{name: 'Clothing1'}, {name: 'Clothing2'}]);
   });
 
+  it('can add items to the basket', function() { 
+    $httpBackend.flush();
+    scope.add(scope.clothes[0]);
+    expect(scope.basket.length).toEqual(1);
+  });
+
 });
