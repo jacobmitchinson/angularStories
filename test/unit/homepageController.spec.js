@@ -13,7 +13,7 @@ describe('homepageController', function() {
   }));
 
   it('can return the items', function() { 
-    expect(scope.phones).toBeUndefined();
+    expect(scope.clothes).toBeUndefined();
     $httpBackend.flush();
     expect(scope.clothes).toEqual([{name: 'Clothing1'}, {name: 'Clothing2'}]);
   });
