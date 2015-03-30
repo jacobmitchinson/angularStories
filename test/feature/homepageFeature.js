@@ -28,7 +28,7 @@ describe('Homepage', function() {
 
   it('can display the category of the items', function() { 
     var item = element.all(by.binding('item.category')).first();
-    expect(item.getText()).toEqual("Women’s Footwear");
+    expect(item.getText()).toEqual("Women's Footwear");
   });
 
   it('can display the available quantity', function() { 
