@@ -18,13 +18,14 @@
         <p>{{item.category}}</p>
         <p>{{item.quantity}}</p>
         <p>£{{item.price.toFixed(2)}}</p>
-        <input class='add-to-basket' id={{item.name}} type="button" value="Add to Basket" ng-click="add(item)">
+        <input class='add-to-basket' type="button" value="Add to Basket" ng-click="add(item)">
       </div>
 
     </div>
 
     <div ng-repeat='item in basket' class='basket'>
       {{item.name}}
+      <input class='remove-from-basket' type="button" value="Remove from Basket" ng-click="remove(item)">
     </div>
 
   </body>
