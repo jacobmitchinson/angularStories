@@ -11,12 +11,12 @@
   {
     "name": "15off", 
     "price": 15, 
-    "totalReq": [{"total": 75}], 
-    "reqAny": [
+    "totalReq": 75, 
+    "orConditions": [
                 {
                   "category": "Women's Footwear", 
                   "category": "Men's Footwear"
                 }
               ]
   }
-]);
+]
