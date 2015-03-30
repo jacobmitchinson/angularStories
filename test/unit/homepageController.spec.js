@@ -11,7 +11,7 @@ describe('homepageController', function() {
     $httpBackend.expectGET('clothes/vouchers.json').
         respond([{name: '5off', price: 5, totalReq: 0}, 
                  {name: '10off', price: 10, totalReq: 50},
-                 {name: '15off', price: 15, totalReq: [{total: 75}], reqAny: [{category: "Women's Footwear", category: "Men's Footwear"}]}
+                 {name: '15off', price: 15, totalReq: 75, orConditions: [{category: "Women's Footwear", category: "Men's Footwear"}]}
                  ]);
     scope = $rootScope.$new();
     ctrl = $controller('homepageController', {$scope: scope});
@@ -48,5 +48,18 @@ describe('homepageController', function() {
     scope.applyVoucher('5off');
     expect(scope.total).toEqual(94);
   });
+
+  it('can apply a 10 off voucher to the order', function() { 
+    add();
+    scope.applyVoucher('10off');
+    expect(scope.total).toEqual(89);
+  });
+
+  it('can apply a 15 off voucher to the order', function() { 
+    add();
+    scope.applyVoucher('15off');
+    expect(scope.total).toEqual(84);
+  });
+
 
 });
