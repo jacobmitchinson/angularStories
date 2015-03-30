@@ -23,9 +23,12 @@
 
     </div>
 
-    <div ng-repeat='item in basket' class='basket'>
-      {{item.name}}
-      <input class='remove-from-basket' type="button" value="Remove from Basket" ng-click="remove(item)">
+    <div class='basket'>
+      <div ng-repeat='item in basket'>
+        {{item.name}}
+        <input class='remove-from-basket' type="button" value="Remove from Basket" ng-click="remove(item)">
+      </div>
+      <p id='total-price'>£{{calculateTotal().toFixed(2)}}</p>
     </div>
 
   </body>
