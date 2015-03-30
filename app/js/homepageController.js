@@ -3,5 +3,10 @@ fashionApp.controller('homepageController', function($scope, $http) {
     $scope.clothes = data;
   });
 
-  
+  $scope.basket = [];
+
+  $scope.add = function(item) { 
+    $scope.basket.push(item);
+  };
+
 });
