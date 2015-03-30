@@ -1,0 +1,22 @@
+[
+  {
+    "name": "5off", 
+    "price": 5, 
+    "totalReq": 0}, 
+  {
+    "name": "10off", 
+    "price": 10, 
+    "totalReq": 50
+  },
+  {
+    "name": "15off", 
+    "price": 15, 
+    "totalReq": [{"total": 75}], 
+    "reqAny": [
+                {
+                  "category": "Women's Footwear", 
+                  "category": "Men's Footwear"
+                }
+              ]
+  }
+]);
