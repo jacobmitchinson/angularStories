@@ -11,9 +11,16 @@
   <body ng-controller='homepageController'> 
 
     <div ng-repeat='item in clothes'> 
-      <p>Item: {{item.name}}</p>
-      <p>Name: {{item.colour}}</p>
-    </div
+
+      <div ng-show="item.quantity">
+        <p>{{item.name}}</p>
+        <p>{{item.colour}}</p>
+        <p>{{item.category}}</p>
+        <p>{{item.quantity}}</p>
+        <p>£{{item.price.toFixed(2)}}</p>
+      </div>
+
+    </div>
 
   </body>
 
