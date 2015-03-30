@@ -3,7 +3,12 @@ fashionApp.controller('homepageController', function($scope, $http) {
     $scope.clothes = data;
   });
 
+  $http.get('clothes/vouchers.json').success(function(data) {
+    $scope.vouchers = data;
+  });
+
   $scope.basket = [];
+  $scope.total = 0;
 
   $scope.add = function(item) { 
     $scope.basket.push(item);
@@ -13,11 +18,37 @@ fashionApp.controller('homepageController', function($scope, $http) {
     $scope.basket.pop(item);
   };
 
-  $scope.total = function() { 
-    var total = 0;
+  $scope.calculateTotal = function() { 
+    $scope.total = 0;
     for(var i = 0; i < $scope.basket.length; i++) { 
-      total += $scope.basket[i].price;
+      $scope.total += $scope.basket[i].price;
     };
-    return total;
+    return $scope.total;
   };
+
+  $scope.applyVoucher = function(voucher) { 
+    for(var i = 0; i < $scope.vouchers.length; i++) { 
+      if($scope._checkVoucherName($scope.vouchers[i], voucher)) { 
+        if($scope._checkPriceConditions($scope.vouchers[i])) { 
+          $scope.total = $scope.calculateTotal() - $scope.vouchers[i].price;
+        };
+      }
+    };
+  };
+
+  $scope._checkVoucherName = function(voucher, wantedVoucher) { 
+    if(voucher.name === wantedVoucher) { 
+      return true;
+    }
+  };
+
+  $scope._checkPriceConditions = function(voucher) { 
+    if($scope.calculateTotal() > voucher.totalReq) { 
+      return true;
+    }
+  };
+
+  // $scope._checkOtherConditions = function(voucher) { 
+
+  // }
 });
