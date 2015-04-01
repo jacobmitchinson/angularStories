@@ -17,7 +17,7 @@
         <p>{{item.category}}</p>
         <p>{{item.quantity}}</p>
         <p>£{{item.price.toFixed(2)}}</p>
-        <input class='add-to-basket' type="button" value="Add to Basket" ng-click="add(item)">
+        <input class='add-to-basket' type="button" value="Add to Basket" ng-click="add(item); calculateTotal()">
       </div>
 
     </div>
@@ -25,13 +25,12 @@
     <div class='basket'>
       <div ng-repeat='item in basket'>
         {{item.name}}
-        <input class='remove-from-basket' type="button" value="Remove from Basket" ng-click="remove(item)">
+        <input class='remove-from-basket' type="button" value="Remove from Basket" ng-click="remove(item); calculateTotal()">
       </div>
       <input type="text" ng-model="voucher" name="text" id='enter-voucher' />
-      <input type="submit" id="submit" value="Submit" />
-      <p id='total-price'>£{{calculateTotal().toFixed(2)}}</p>
-
-      <p id='voucher-price'> With Voucher: {{ applyVoucher(voucher); '£' + total.toFixed(2)}}</p>
+      <p id='total-price' ng-bind="'£' + total.toFixed(2)"></p>
+      <p id='voucher-price' ng-show="totalWithDiscount">£{{applyVoucher(voucher); totalWithDiscount.toFixed(2)}}</p>
+      <p id='voucher-message' ng-bind="message"></p> 
     </div>
   </body>
 
