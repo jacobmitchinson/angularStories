@@ -4,12 +4,13 @@ describe('Basket', function() {
     browser.get('/app/index.html');
   });
 
-  function addToBasket() { 
-    element.all(by.css(".add-to-basket")).first().click();
+  function addToBasket(item) { 
+    element.all(by.css(".add-to-basket")).get(item).click();
+    element.all(by.css("#checkout_link")).first().click();
   };
 
   it('can apply a £5 voucher to the order', function() { 
-    addToBasket();   
+    addToBasket(0);   
     var voucherEntry = element.all(by.id('enter-voucher')).first();
     voucherEntry.sendKeys('5off');
     var el = element.all(by.id('voucher-price')).first();
@@ -17,7 +18,7 @@ describe('Basket', function() {
   });
 
   it('can apply a £10 voucher to the order', function() { 
-    addToBasket();   
+    addToBasket(0);   
     var voucherEntry = element.all(by.id('enter-voucher')).first();
     voucherEntry.sendKeys('10off');
     var el = element.all(by.id('voucher-price')).first();
@@ -25,7 +26,7 @@ describe('Basket', function() {
   });
 
   it('can not apply a £10 voucher unless order over £50', function() { 
-    element.all(by.css(".add-to-basket")).get(1).click();
+    addToBasket(1);
     var voucherEntry = element.all(by.id('enter-voucher')).first();
     voucherEntry.sendKeys('10off');
     var el = element.all(by.id('voucher-price')).first();
@@ -33,7 +34,7 @@ describe('Basket', function() {
   });
 
   it('can apply a £15 voucher to the order', function() { 
-    addToBasket();   
+    addToBasket(0);   
     var voucherEntry = element.all(by.id('enter-voucher')).first();
     voucherEntry.sendKeys('15off');
     var el = element.all(by.id('voucher-price')).first();
@@ -41,7 +42,7 @@ describe('Basket', function() {
   }); 
 
   it('will not apply a £15 voucher to the order unless order contains shoes', function() { 
-    element.all(by.css(".add-to-basket")).last().click(); 
+    addToBasket(12);
     var voucherEntry = element.all(by.id('enter-voucher')).first();
     voucherEntry.sendKeys('15off');
     var el = element.all(by.id('voucher-price')).first();
@@ -49,7 +50,7 @@ describe('Basket', function() {
   }); 
 
   it('will not apply a £15 voucher to the order unless it is over £75', function() { 
-    element.all(by.css(".add-to-basket")).get(1).click(); 
+    addToBasket(1);
     var voucherEntry = element.all(by.id('enter-voucher')).first();
     voucherEntry.sendKeys('15off');
     var el = element.all(by.id('voucher-price')).first();
@@ -57,7 +58,7 @@ describe('Basket', function() {
   }); 
 
   it('will display when the voucher is invalid', function() { 
-    element.all(by.css(".add-to-basket")).last().click(); 
+    addToBasket(12);
     var voucherEntry = element.all(by.id('enter-voucher')).first();
     voucherEntry.sendKeys('15off');
     var el = element.all(by.id('voucher-message')).first();
@@ -65,7 +66,7 @@ describe('Basket', function() {
   }); 
 
   it('will display when the voucher is valid', function() { 
-    element.all(by.css(".add-to-basket")).first().click(); 
+    addToBasket(0);
     var voucherEntry = element.all(by.id('enter-voucher')).first();
     voucherEntry.sendKeys('15off');
     var el = element.all(by.id('voucher-message')).first();
