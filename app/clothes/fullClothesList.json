@@ -4,6 +4,7 @@
     "colour": "Patent Black",
     "category": "Women's Footwear",
     "price": 99.00,
+    "image": "images/black_shoe.jpg",
     "quantity": 5
   },
   {
@@ -11,6 +12,7 @@
     "colour": "Blue",
     "category": "Women's Footwear",
     "price": 42.00,
+    "image": "images/blue_suede.jpg",
     "quantity": 4
   },
   {
@@ -18,6 +20,7 @@
     "colour": "Tan",
     "category": "Men's Footwear",
     "price": 34.00,
+    "image": "images/driver_loafers.jpg",
     "quantity": 12
   },
   {
@@ -25,6 +28,7 @@
     "colour": "Red",
     "category": "Men's Footwear",
     "price": 19.00,
+    "image": "images/red_flip_flops.jpg",
     "quantity": 6
   },
   {
@@ -32,6 +36,7 @@
     "colour": "Blue",
     "category": "Men's Footwear",
     "price": 19.00,
+    "image": "images/flip_flops_blue.jpg",
     "quantity": 0
   },
   {
@@ -39,6 +44,7 @@
     "colour": "Black",
     "category": "Women's Casualwear",
     "price": 167.00,
+    "image": "images/gold_button_cardigan.jpg",
     "quantity": 6
   },
   {
@@ -46,12 +52,14 @@
     "colour": "Medium Red",
     "category": "Women's Casualwear",
     "price": 30.00,
+    "image": "images/red_cotton_shorts.jpg",
     "quantity": 5
   },
   {
     "name": "Fine Stripe Short Sleeve Shirt",
     "colour": "Grey",
     "category": "Men's Casualwear",
+    "image": "images/grey_stripe.jpg",
     "price": 49.00,
     "quantity": 9
   },
@@ -59,6 +67,7 @@
     "name": "Fine Stripe Short Sleeve Shirt",
     "colour": "Green",
     "category": "Men's Casualwear",
+    "image": "images/green_stripe.jpg",
     "price": 39.99,
     "quantity": 3
   },
@@ -66,6 +75,7 @@
     "name": "Sharkskin Waistcoat",
     "colour": "Charcoal",
     "category": "Men's Formalwear",
+    "image": "images/waistcoat.jpg",
     "price": 75.00,
     "quantity": 2
   },
@@ -74,6 +84,7 @@
     "colour": "Deer",
     "category": "Men's Formalwear",
     "price": 175.50,
+    "image": "images/waistcoat_deer.jpg",
     "quantity": 1
   },
   {
@@ -81,6 +92,7 @@
     "colour": "Black",
     "category": "Women's Formalwear",
     "price": 270.00,
+    "image": "images/bird_print.jpg",
     "quantity": 10
   },
   {
@@ -88,6 +100,7 @@
     "colour": "Pink",
     "category": "Women's Formalwear",
     "price": 540.00,
+    "image": "images/midtwist.jpg",
     "quantity": 5
   }
 ]

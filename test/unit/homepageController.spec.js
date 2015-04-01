@@ -7,11 +7,14 @@ describe('homepageController', function() {
   beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
     $httpBackend = _$httpBackend_;
     $httpBackend.expectGET('clothes/fullClothesList.json').
-        respond([{name: 'Clothing1', price: 99}, {name: 'Clothing2', price: 10}]);
+        respond([ {name: 'Clothing1', price: 99, category: "Men's Footwear"}, 
+                  {name: 'Clothing2', price: 60}, 
+                  {name: 'Clothing3', price: 76, category: "Toupe"}, 
+                  {name: 'Clothing4', price: 49}]); 
     $httpBackend.expectGET('clothes/vouchers.json').
         respond([{name: '5off', price: 5, totalReq: 0}, 
                  {name: '10off', price: 10, totalReq: 50},
-                 {name: '15off', price: 15, totalReq: 75, orConditions: [{category: "Women's Footwear", category: "Men's Footwear"}]}
+                 {name: '15off', price: 15, totalReq: 75, categoryConditions: [{category: "Women's Footwear"}, {category: "Men's Footwear"}]}
                  ]);
     scope = $rootScope.$new();
     ctrl = $controller('homepageController', {$scope: scope});
@@ -23,7 +26,10 @@ describe('homepageController', function() {
   };
 
   it('can return the items', function() { 
-    expect(scope.clothes).toEqual([{name: 'Clothing1', price: 99}, {name: 'Clothing2', price: 10}]);
+    expect(scope.clothes).toEqual([ {name: 'Clothing1', price: 99, category: "Men's Footwear"}, 
+                                    {name: 'Clothing2', price: 60}, 
+                                    {name: 'Clothing3', price: 76, category: "Toupe"}, 
+                                    {name: 'Clothing4', price: 49} ]);
   });
 
   it('can add items to the basket', function() { 
@@ -46,20 +52,37 @@ describe('homepageController', function() {
   it('can apply a 5 off voucher to the order', function() { 
     add();
     scope.applyVoucher('5off');
-    expect(scope.total).toEqual(94);
+    expect(scope.totalWithDiscount).toEqual(94);
   });
 
   it('can apply a 10 off voucher to the order', function() { 
     add();
     scope.applyVoucher('10off');
-    expect(scope.total).toEqual(89);
+    expect(scope.totalWithDiscount).toEqual(89);
   });
 
-  it('can apply a 15 off voucher to the order', function() { 
+  it('will not apply a 10 off voucher unless the order is over £50', function() { 
+    scope.add(scope.clothes[3]);
+    scope.applyVoucher('10off');
+    expect(scope.totalWithDiscount).toEqual(49);
+  });
+
+  it('can apply a 15 off voucher to the order if the order is over £75 and has shoes', function() { 
     add();
     scope.applyVoucher('15off');
-    expect(scope.total).toEqual(84);
+    expect(scope.totalWithDiscount).toEqual(84);
   });
 
+  it('will not apply a 15 off voucher unless the order is over 75', function() { 
+    scope.add(scope.clothes[1]);
+    scope.applyVoucher('15off');
+    expect(scope.totalWithDiscount).toEqual(60);
+  });
+
+  it('will not apply a 15 off voucher unless the order contains shoes', function() { 
+    scope.add(scope.clothes[2]);
+    scope.applyVoucher('15off');
+    expect(scope.totalWithDiscount).toEqual(76);
+  });
 
 });
