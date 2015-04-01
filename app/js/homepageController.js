@@ -30,7 +30,7 @@ fashionApp.controller('homepageController', function($scope, $http) {
   };
 
   $scope._hasItemInBasket = function(item) { 
-    for(var i = 0; $scope.basket.length; i++) { 
+    for(var i = 0; i < $scope.basket.length; i++) { 
       if($scope.basket[i] === item) { 
         return true;
       }; 
