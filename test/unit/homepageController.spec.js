@@ -42,7 +42,6 @@ describe('homepageController', function() {
     add();
     add();
     expect(scope.basket.length).toEqual(1);
-    console.log(scope.basket);
     expect(scope.basket[0].desiredQuantity).toEqual(3);
   });
 
@@ -54,9 +53,10 @@ describe('homepageController', function() {
 
   it('can total the items in the basket', function() { 
     add();
-    add()
+    add();
+    scope.add(scope.clothes[1]);
     scope.calculateTotal();
-    expect(scope.total).toEqual(198);
+    expect(scope.total).toEqual(258);
   });
 
   it('can apply a 5 off voucher to the order', function() { 
