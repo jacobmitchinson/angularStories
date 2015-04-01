@@ -1,14 +1,16 @@
 describe('Basket', function() { 
 
   beforeEach(function() {
-    browser.get('/app/index.html');
+    browser.get('/app/');
   });
 
   function addToBasket() { 
     element.all(by.css(".add-to-basket")).first().click();
+    element.all(by.css("#checkout_link")).first().click();
   };
 
   function removeFromBasket() { 
+    element.all(by.css("#checkout_link")).first().click();
     element.all(by.css(".remove-from-basket")).first().click();
   }
 
@@ -28,7 +30,7 @@ describe('Basket', function() {
   it('can show the total price of the order', function() { 
     addToBasket();
     var el = element.all(by.id('total-price')).first();
-    expect(el.getText()).toEqual("£99.00");
+    expect(el.getText()).toContain("£99.00");
   });
 
 }); 
