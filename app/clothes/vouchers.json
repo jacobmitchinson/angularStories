@@ -12,9 +12,11 @@
     "name": "15off", 
     "price": 15, 
     "totalReq": 75, 
-    "orConditions": [
+    "categoryConditions": [
                 {
-                  "category": "Women's Footwear", 
+                  "category": "Women's Footwear"
+                }, 
+                {
                   "category": "Men's Footwear"
                 }
               ]
