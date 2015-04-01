@@ -9,6 +9,7 @@ fashionApp.controller('homepageController', function($scope, $http) {
 
   $scope.basket = [];
   $scope.total = 0;
+  $scope.totalWithDiscount = null;
   $scope.voucher;
   $scope.message = "No voucher applied.";
 
@@ -28,38 +29,41 @@ fashionApp.controller('homepageController', function($scope, $http) {
     return $scope.total;
   };
 
-  // this isn't working because you are adding iterating through all vouchers and not all vouchers equal your voucher name
-
-  $scope.applyVoucher = function(voucher) { 
-    for(var i = 0; i < $scope.vouchers.length; i++) { 
-      if($scope._checkVoucherName($scope.vouchers[i], voucher)) { 
-        if($scope._checkPriceConditions($scope.vouchers[i]) && $scope._checkCategoryConditions($scope.vouchers[i])) { 
-          $scope.total = $scope.calculateTotal() - $scope.vouchers[i].price;
-          return $scope.message = "£" + $scope.vouchers[i].price + " voucher added."
-        } else {
-          return $scope.updateMessage("Your basket doesn't meet the voucher requirements.");
-        };
-      }
-    };
+  $scope.applyVoucher = function(voucher) {   
+    var validVoucher = $scope._check(voucher)
+    if(validVoucher) { 
+      $scope.totalWithDiscount = $scope.calculateTotal() - validVoucher.price;
+      $scope.message = "£" + validVoucher.price + " voucher added."
+    } else if(voucher != undefined) { 
+      $scope.totalWithDiscount = $scope.total;
+      $scope.message = "Invalid voucher."
+    }  
   };
 
-  $scope.updateMessage = function(message) { 
-    $scope.message = message;
+  $scope._check = function(voucher) { 
+    for(var i = 0; i < $scope.vouchers.length; i++) {
+      var checkName = $scope._checkName($scope.vouchers[i], voucher);
+      var checkPrice = $scope._checkPrice($scope.vouchers[i], voucher);
+      var checkCategory = $scope._checkCategory($scope.vouchers[i]);
+      if(checkName && checkPrice && checkCategory) { 
+        return $scope.vouchers[i];
+      };
+    }
   }
 
-  $scope._checkVoucherName = function(voucher, wantedVoucher) { 
+  $scope._checkName = function(voucher, wantedVoucher) { 
     if(voucher.name === wantedVoucher) { 
       return true;
     }
   };
 
-  $scope._checkPriceConditions = function(voucher) { 
-    if($scope.calculateTotal() > voucher.totalReq) { 
+  $scope._checkPrice = function(voucher) { 
+    if($scope.calculateTotal() > voucher.totalReq) {
       return true;
     }
   };
 
-  $scope._checkCategoryConditions = function(voucher) { 
+  $scope._checkCategory = function(voucher) { 
     if(voucher.categoryConditions != undefined) { 
       for(var i = 0; i < voucher.categoryConditions.length; i++) {
         for(var e = 0; e < $scope.basket.length; e++) { 
