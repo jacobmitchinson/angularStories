@@ -13,20 +13,23 @@ fashionApp.controller('homepageController', function($scope, $http) {
   $scope.voucher;
   $scope.message = "No voucher applied.";
 
-  // if the item exists in the basket increase the item quantity in the basket
-
   $scope.add = function(item) { 
     if($scope._hasItemInBasket(item)){
-      var index = $scope.basket.indexOf(item);
-      $scope.basket[index].desiredQuantity += 1;
+      $scope.increaseQuantity(item);
     } else { 
       item.desiredQuantity = 1;
       $scope.basket.push(item);
     }
+    item.quantity -= 1;
   };
 
   $scope.remove = function(item) { 
     $scope.basket.pop(item);
+  };
+
+  $scope.increaseQuantity = function(item) { 
+    var index = $scope.basket.indexOf(item);
+    $scope.basket[index].desiredQuantity += 1;
   };
 
   $scope._hasItemInBasket = function(item) { 

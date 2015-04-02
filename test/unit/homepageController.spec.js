@@ -7,7 +7,7 @@ describe('homepageController', function() {
   beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
     $httpBackend = _$httpBackend_;
     $httpBackend.expectGET('clothes/fullClothesList.json').
-        respond([ {name: 'Clothing1', price: 99, category: "Men's Footwear"}, 
+        respond([ {name: 'Clothing1', price: 99, category: "Men's Footwear", quantity: 1}, 
                   {name: 'Clothing2', price: 60}, 
                   {name: 'Clothing3', price: 76, category: "Toupe"}, 
                   {name: 'Clothing4', price: 49}]); 
@@ -26,7 +26,7 @@ describe('homepageController', function() {
   };
 
   it('can return the items', function() { 
-    expect(scope.clothes).toEqual([ {name: 'Clothing1', price: 99, category: "Men's Footwear"}, 
+    expect(scope.clothes).toEqual([ {name: 'Clothing1', price: 99, category: "Men's Footwear", quantity: 1}, 
                                     {name: 'Clothing2', price: 60}, 
                                     {name: 'Clothing3', price: 76, category: "Toupe"}, 
                                     {name: 'Clothing4', price: 49} ]);
@@ -58,6 +58,11 @@ describe('homepageController', function() {
     scope.calculateTotal();
     expect(scope.total).toEqual(258);
   });
+
+  it('can decrease the available quantity when items are added to the basket', function() { 
+    add();
+    expect(scope.clothes[0].quantity).toEqual(0);
+  })
 
   it('can apply a 5 off voucher to the order', function() { 
     add();
