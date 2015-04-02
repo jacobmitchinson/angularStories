@@ -1,9 +1,19 @@
 body { 
-  padding-top: 5em; 
+  padding-top: 10em; 
+  font-family: inherit;
+  font-size: 11px;
+}
+
+.logo { 
+  font-family: 'Rosario', sans-serif; 
 }
 
 .padding { 
   padding-top: 2em;
+}
+
+.padding-right { 
+  padding-right: 2em;
 }
 
 .navbar-center{
