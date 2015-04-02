@@ -11,6 +11,16 @@ AngularStories is my first Angular project without stabilisers. It is a responsi
 * [x] As a user I can view the total price for the products in my shopping cart with discounts applied
 * [x] As a user I am alerted when I apply an invalid voucher to my shopping cart
 
+# How to Run
+
+npm install
+npm start
+
+# How to Test
+
+Unit: npm test
+Feature: protractor test/protractor-conf.js
+
 # Technologies
 
 * Angular for API calls and MVC 
