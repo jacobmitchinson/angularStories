@@ -15,6 +15,7 @@ AngularStories is my first Angular project without stabilisers. It is a responsi
 
 * npm install
 * npm start
+* navigate your browser to: http://localhost:8000/app
 
 # How to Test
 
