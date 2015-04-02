@@ -1,7 +1,6 @@
 # angularStories
 
-AngularStories is my first Angular project. It is a responsive retail shop. The shop was designed to be able to read an API of clothes, interpret the data, and then satisfy the following user stories:
-
+AngularStories is my first Angular project without any stabilisers. It is a responsive retail shop. The shop was designed to be able to read an API of clothes, interpret the data, and then satisfy the following user stories:
 
 > * [x] = Done
 
@@ -19,4 +18,20 @@ AngularStories is my first Angular project. It is a responsive retail shop. The 
 * Unit testing with Karma
 * Bootstrap 
 
+# What I Learnt 
+
+To complete this project I had to get to grips with Angular. I tried to follow the Angular tutorial on the website but the jargon on the site proved difficult to penetrate. For the first few days of the project I used the following resources in this order: 
+
+* A talk with Angular creator, Miško Hevery: https://www.youtube.com/watch?v=X0VsStcCCM8
+* My favourite AngularJS book: http://www.angularjsbook.com/angular-basics/chapters/introduction/
+* PhoneCat Angular tutorial
+* MakersAcademy AngularJS tutorial (updated just in time!)
+
+# What Needs Improvement 
+
+* [] Seperate voucher controller from main controller
+* [] Refactor methods in voucher controller
+* [] DRY out feature tests
+* [] Fix bug where discounted voucher price does not update if you return to the shop, add an item, and go back to the checkout
+* [] Improve responsive design of the application 
 
