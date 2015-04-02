@@ -13,13 +13,13 @@ AngularStories is my first Angular project without stabilisers. It is a responsi
 
 # How to Run
 
-npm install
-npm start
+* npm install
+* npm start
 
 # How to Test
 
-Unit: npm test
-Feature: protractor test/protractor-conf.js
+* Unit: npm test
+* Feature: protractor test/protractor-conf.js
 
 # Technologies
 
