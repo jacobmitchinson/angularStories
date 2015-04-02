@@ -49,6 +49,7 @@ fashionApp.controller('homepageController', function($scope, $http) {
     return $scope.total;
   };
 
+  // TODO: This should be in a voucher controller
   $scope.applyVoucher = function(voucher) {   
     var validVoucher = $scope._check(voucher)
     if(validVoucher) { 
