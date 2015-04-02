@@ -1,0 +1,11 @@
+<div class="row text-center">
+  <div class="col-md-4 col-sm-6 col-xs-8 padding" ng-repeat='item in clothes'>
+    <img src={{item.image}} height="150">
+    <h4>{{item.name}}</h4>
+    <p>Colour: {{item.colour}}</p>
+    <p>Category: {{item.category}}</p>
+    <p><b>{{item.quantity}}</b> left in stock</p>
+    <p>£{{item.price.toFixed(2)}}</p>
+    <input class='add-to-basket btn btn-secondary' type="button" value="Add to Basket" ng-click="add(item); calculateTotal()" ng-disabled="item.quantity < 1">
+  </div>
+</div>

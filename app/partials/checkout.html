@@ -1,0 +1,46 @@
+<div>
+  <table>
+    <tr>
+      <div class="row">
+        <th class="col-sm-1 col-md-3">Items</th>
+        <th class="col-sm-1 col-md-3">Colour</th>
+        <th class="col-sm-1 col-md-3">Price</th>
+        <th class="col-sm-1 col-md-3">Quantity</th>
+        <th class="col-sm-1 col-md-3">Remove</th>
+      </div>
+    </tr>
+    <tr ng-repeat='item in basket'>
+      <div class="row">
+        <td class="col-sm-1 col-md-3 padding">{{item.name}}</td>
+        <td class="col-sm-1 col-md-3 padding">{{item.colour}}</td> 
+        <td class="col-sm-1 col-md-3 padding">£{{item.price.toFixed(2)}}</td>
+        <td class="col-sm-1 col-md-3 padding">{{item.desiredQuantity}}</td>   
+        <td class="col-sm-1 col-md-3 padding"> <input class='remove-from-basket' type="button" value="Remove from Basket" ng-click="remove(item); calculateTotal()"></td>
+      </div>
+    </tr>
+  </table>
+
+  <div class="row">
+    <div class="col-md-10 padding padding-right text-right">
+      Total: <strong id='total-price' ng-bind="'£' + total.toFixed(2)"></strong>
+    </div>
+  </div>
+    <div class="row">
+    <div class="col-md-10 padding padding-right text-right">
+      <div ng-show="totalWithDiscount">Total With Voucher:</div>
+      <b id='voucher-price' ng-show="totalWithDiscount">£{{applyVoucher(voucher); totalWithDiscount.toFixed(2)}}</b>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 padding padding-right text-right">
+      Add Voucher:<input type="text" ng-model="voucher" name="text" id='enter-voucher' />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 padding padding-right text-right">
+      <p id='voucher-message' ng-bind="message"></p>
+    </div>
+  </div>
+</div>
+
+
