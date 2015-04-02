@@ -1,6 +1,6 @@
 # angularStories
 
-AngularStories is my first Angular project without any stabilisers. It is a responsive retail shop. The shop was designed to be able to read an API of clothes, interpret the data, and then satisfy the following user stories:
+AngularStories is my first Angular project without stabilisers. It is a responsive retail shop that was designed to be able to read an API of clothes, interpret the data, and then satisfy the following user stories:
 
 > * [x] = Done
 
