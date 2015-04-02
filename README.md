@@ -38,7 +38,9 @@ To complete this project I had to get to grips with Angular. I tried to follow t
 * PhoneCat Angular tutorial
 * MakersAcademy AngularJS tutorial (updated just in time!)
 
-# What Needs Improvement 
+# What Needs Improvement
+
+> * [x] = Done
 
 * [] Seperate voucher controller from main controller
 * [] Refactor methods in voucher controller
