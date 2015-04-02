@@ -61,7 +61,6 @@ fashionApp.controller('homepageController', function($scope, $http) {
   };
 
   // TODO: this needs refactoring
-
   $scope._check = function(voucher) { 
     for(var i = 0; i < $scope.vouchers.length; i++) {
       var checkName = $scope._checkName($scope.vouchers[i], voucher);
@@ -86,7 +85,6 @@ fashionApp.controller('homepageController', function($scope, $http) {
   };
 
   // TODO: this needs refactoring
-
   $scope._checkCategory = function(voucher) { 
     if(voucher.categoryConditions != undefined) { 
       for(var i = 0; i < voucher.categoryConditions.length; i++) {
