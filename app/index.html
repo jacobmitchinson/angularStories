@@ -5,6 +5,8 @@
   <head>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Rosario' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="css/main.css">
     <script src="js/app.js"></script>
@@ -15,46 +17,20 @@
 
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="navbar-center navbar-brand">
-        <b><a class="navbar-brand" href="#">angularStories</a></b>
+        <b><a class="navbar-brand logo" href="#/shop">angularStories</a></b>
       </div>
       <div class="nav navbar-nav navbar-right" >
       </div>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#" id='total-price' ng-bind="'Basket Total: ' + '£' + total.toFixed(2)"></a></li>
-        <li><a href="#">Check Out</a></li>
+        <li><a href="#/checkout" id='total-price' ng-bind="'Basket Total: ' + '£' + total.toFixed(2)"></a></li>
+        <li><a href="#/checkout" id="checkout_link" >Check Out</a></li>
       </ul>
     </nav>
 
-    <div class="container">
-
-      <div class="row text-center">
-        <div class="col-md-4 col-sm-6 padding" ng-repeat='item in clothes'>
-          <img src={{item.image}} height="150">
-          <h4>{{item.name}}</h4>
-          <p>Colour: {{item.colour}}</p>
-          <p>Category: {{item.category}}</p>
-          <p><b>{{item.quantity}}</b> left in stock</p>
-          <p>£{{item.price.toFixed(2)}}</p>
-          <input class='add-to-basket btn btn-secondary' type="button" value="Add to Basket" ng-click="add(item); calculateTotal()" ng-disabled="item.quantity < 1">
-        </div>
-      </div>
-
-
-      <div class='basket'>
-        <div ng-repeat='item in basket'>
-          {{item.name}}
-          <input class='remove-from-basket' type="button" value="Remove from Basket" ng-click="remove(item); calculateTotal()">
-        </div>
-        <input type="text" ng-model="voucher" name="text" id='enter-voucher' />
-        <p id='total-price' ng-bind="'£' + total.toFixed(2)"></p>
-        <p id='voucher-price' ng-show="totalWithDiscount">£{{applyVoucher(voucher); totalWithDiscount.toFixed(2)}}</p>
-        <p id='voucher-message' ng-bind="message"></p> 
-      </div>
-
+    <div class="view-container">
+      <div ng-view class="view-frame"></div>
     </div>
+
   </body>
-
-
-
 
 </html>
