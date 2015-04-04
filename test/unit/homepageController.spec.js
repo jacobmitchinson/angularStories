@@ -14,7 +14,7 @@ describe('homepageController', function() {
     $httpBackend.expectGET('clothes/vouchers.json').
         respond([{name: '5off', price: 5, totalReq: 0}, 
                  {name: '10off', price: 10, totalReq: 50},
-                 {name: '15off', price: 15, totalReq: 75, categoryConditions: [{category: "Women's Footwear"}, {category: "Men's Footwear"}]}
+                 {name: '15off', price: 15, totalReq: 75, categoryConditions: ["Women's Footwear", "Men's Footwear"]}
                  ]);
     scope = $rootScope.$new();
     ctrl = $controller('homepageController', {$scope: scope});
