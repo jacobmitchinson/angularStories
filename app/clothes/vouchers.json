@@ -12,13 +12,6 @@
     "name": "15off", 
     "price": 15, 
     "totalReq": 75, 
-    "categoryConditions": [
-                {
-                  "category": "Women's Footwear"
-                }, 
-                {
-                  "category": "Men's Footwear"
-                }
-              ]
+    "categoryConditions": ["Women's Footwear", "Men's Footwear"]
   }
 ]
