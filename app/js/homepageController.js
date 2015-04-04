@@ -14,7 +14,7 @@ fashionApp.controller('homepageController', function($scope, $http) {
   $scope.message = "No voucher applied.";
 
   $scope.add = function(item) { 
-    if($scope._hasItemInBasket(item)){
+    if($scope._isItemInBasket(item)){
       $scope.increaseQuantity(item);
     } else { 
       item.desiredQuantity = 1;
@@ -32,7 +32,7 @@ fashionApp.controller('homepageController', function($scope, $http) {
     $scope.basket[index].desiredQuantity += 1;
   };
 
-  $scope._hasItemInBasket = function(item) { 
+  $scope._isItemInBasket = function(item) { 
     for(var i = 0; i < $scope.basket.length; i++) { 
       if($scope.basket[i] === item) { 
         return true;
@@ -49,19 +49,21 @@ fashionApp.controller('homepageController', function($scope, $http) {
     return $scope.total;
   };
 
-  // TODO: This should be in a voucher controller
   $scope.applyVoucher = function(voucher) {   
     var validVoucher = $scope._check(voucher)
     if(validVoucher) { 
       $scope.totalWithDiscount = $scope.calculateTotal() - validVoucher.price;
-      $scope.message = "£" + validVoucher.price + " voucher added."
+      $scope.updateMessage("£" + validVoucher.price + " voucher added.");
     } else if(voucher != undefined) { 
       $scope.totalWithDiscount = $scope.total;
-      $scope.message = "Invalid voucher."
+      $scope.updateMessage("Invalid voucher.");
     }  
   };
 
-  // TODO: this needs refactoring
+  $scope.updateMessage = function(string) { 
+    $scope.message = string;
+  };
+
   $scope._check = function(voucher) { 
     for(var i = 0; i < $scope.vouchers.length; i++) {
       var checkName = $scope._checkName($scope.vouchers[i], voucher);
@@ -85,18 +87,19 @@ fashionApp.controller('homepageController', function($scope, $http) {
     }
   };
 
-  // TODO: this needs refactoring
   $scope._checkCategory = function(voucher) { 
     if(voucher.categoryConditions != undefined) { 
-      for(var i = 0; i < voucher.categoryConditions.length; i++) {
-        for(var e = 0; e < $scope.basket.length; e++) { 
-          if(voucher.categoryConditions[i].category === $scope.basket[e].category) {             
-            return true;
-          }
-        }
-      }
+      return $scope._isCategoryInBasket(voucher);
     } else {  
       return true;
     }
-  }
+  };
+
+  $scope._isCategoryInBasket = function(voucher) { 
+    for(var i = 0; i < $scope.basket.length; i++) { 
+      if(voucher.categoryConditions.indexOf($scope.basket[i].category) > -1) {      
+        return true;
+      }
+    }
+  };
 });
