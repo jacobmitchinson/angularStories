@@ -7,7 +7,6 @@
     "test": "test"
   },
   "dependencies": {
-    "express": "^4.12.3",
     "jasmine-core": "^2.2.0",
     "karma": "^0.12.31",
     "http-server": "^0.6.1",
