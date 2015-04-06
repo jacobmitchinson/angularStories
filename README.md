@@ -47,5 +47,5 @@ To complete this project I had to get to grips with Angular. I tried to follow t
 * [] DRY out feature tests
 * [] Fix bug where discounted voucher price does not update if you return to the shop, add an item, and go back to the checkout
 * [] Improve responsive design of the application 
-* [] Add IE support
+* [] Add IE 8 support
 
